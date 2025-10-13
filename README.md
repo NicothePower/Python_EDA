@@ -4,16 +4,16 @@ Analisis EDA para Proyecto 4 - unidad Python for data
 ## Requisitos del proyecto.
 A lo largo de este proyecto se cubrirán los siguientes puntos:
 
-● Transformación y limpieza de los datos.
-● Análisis descriptivo de los datos.
-● Visualización de los datos.
-● Informe explicativo del análisis.
+● Transformación y limpieza de los datos.  
+● Análisis descriptivo de los datos.  
+● Visualización de los datos.  
+● Informe explicativo del análisis.  
 
 
 ## Herramientas utilizadas.
 
-● Python
-● Pandas
+● Python  
+● Pandas  
 ● Visual Studio Code
 
 ## Descripción de datos utilizados
@@ -29,9 +29,9 @@ Este dataset consta de:
 Brinda información sobre las características demográficas y comportamiento de compra de los clientes del banco. Este Excel consta de 3 hojas de trabajo diferentes, en cada una de ellas tenemos los clientes que entraron en el banco en diferentes años. 
 
 ## Método de entrega.
-● Archivo README.md, que recoja los pasos seguidos durante el proyecto y el análisis.
-● Carpeta de datos llamada **Manejo_de_datos** con los archivos en bruto, asociados a este proyecto, y los datos guardados después de las transformaciones.
-● Carpeta de codigo llamada **Queries_python_eda** con los notebooks o archivos py donde se han realizado todos los pasos pedidos en el proyecto
+● Archivo README.md, que recoja los pasos seguidos durante el proyecto y el análisis.  
+● Carpeta de datos llamada **Manejo_de_datos** con los archivos en bruto, asociados a este proyecto, y los datos guardados después de las transformaciones.  
+● Carpeta de codigo llamada **Queries_python_eda** con los notebooks o archivos py donde se han realizado todos los pasos pedidos en el proyecto  
 
 
 
