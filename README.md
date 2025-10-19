@@ -9,7 +9,6 @@ A lo largo de este proyecto se cubrirán los siguientes puntos:
 ● Visualización de los datos.  
 ● Informe explicativo del análisis.  
 
-
 ## Herramientas utilizadas.
 
 ● Python  
@@ -33,6 +32,44 @@ Brinda información sobre las características demográficas y comportamiento de
 ● Carpeta de datos llamada **Manejo_de_datos** con los archivos en bruto, asociados a este proyecto, y los datos guardados después de las transformaciones.  
 ● Carpeta de codigo llamada **Queries_python_eda** con los notebooks o archivos py donde se han realizado todos los pasos pedidos en el proyecto  
 
+## INFORME DE LOS RESULTADOS Y PRINCIPALES PASOS LLEVADOS A CABO 
 
+Total de filas procesadas del dataset final: 43000
+
+**1) Calidad de datos y cambios realizados:**
+- Edad (age): imputada por mediana por grupo 'job' y convertida a entero. Mediana global usada: 38.0 años.
+- Se reemplazaron valores age==0 por NaN antes de imputar (mejor tratamiento de datos inválidos).
+- Columnas eliminadas por no aportar (ej.): 'latitude', 'longitude', 'default'.
+- Columnas numéricas convertidas a float (ej.: emp.var.rate, cons.price.idx, cons.conf.idx, euribor3m, nr.employed) y limpieza de separadores decimales.
+- Columna 'date' convertida a datetime y usada para agregaciones temporales.
+
+**2) Nuevas columnas creadas (y su objetivo):**
+- 'duracion_minutos': duración de la llamada en minutos (con 1 decimal).
+- 'grupo_duracion': buckets de duración (0-5, 5-10, ...).
+- 'rangos_edad': bucket de edad (menos de 25, 25-50, 50-75, >75).
+- 'ultimo_contacto': bucket de pdays (menos de 6 meses, 6-12 meses, ...).
+- 'total_hijos', 'rango_ingresos', 'tenure_years', 'visitas_mensuales' en el dataset de clientes.
+
+**3) Resultados agregados / distribuciones relevantes:**
+- Media mensual (total_visitas) (serie clientes): 19895.72 (valor medio usado en gráficas).
+- Distribución por rango de ingresos (principales grupos):
+  50k a 100k (28.7%), 100k a 150k (28.6%), 0 a 50k (25.2%), 150k a 200k (17.4%)
+
+- Resumen (ej. 'rango_ingresos' conteos):
+  0 a 50k: 10897
+  50k a 100k: 12409
+  100k a 150k: 12347
+
+**4) PCA (componentes principales) - variables con mayor carga absoluta:**
+  PC1: nr.employed, emp.var.rate, tenure_years
+  PC2: duracion_minutos, duration, total_hijos
+  PC3: total_hijos, duration, duracion_minutos
+
+**5) Correlaciones ejemplares (post-limpieza):**
+ - age vs duracion_minutos: Pearson = 0.016, Spearman = 0.027 (correlación débil).
+
+**6) Unión de datasets:**
+ - LEFT JOIN realizado entre Bank_registros (left) y Caracteristicas_clientes (right).
+ - Dimensiones resultado (merged): 43000 filas x 34 columnas.
 
 
