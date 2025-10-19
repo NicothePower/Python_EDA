@@ -72,4 +72,36 @@ Total de filas procesadas del dataset final: 43000
  - LEFT JOIN realizado entre Bank_registros (left) y Caracteristicas_clientes (right).
  - Dimensiones resultado (merged): 43000 filas x 34 columnas.
 
+**7) Analisis Avanzado - Correlación de variables y aplicación de Modelo predictivo:**
 
+**Resultados modelo de regresión logística**
+
+Rendimiento del modelo (conjunto de prueba): 
+- Tamaño conjunto prueba: 10124 registros
+- Accuracy : 0.895
+- Precision: 0.588
+- Recall   : 0.248
+- F1 score :0.349
+- ROC AUC  : 0.902
+
+**Variables más influyentes (según los coeficientes del modelo):**
+- Efectos positivos (aumentan prob. de conversión):
+• duration: coef=1.189, exp(coef)=3.285
+• previous: coef=0.204, exp(coef)=1.226
+• tenure_years:coef=0.140, exp(coef)=1.151
+- Efectos negativos (disminuyen prob. de conversión):
+• euribor3m: coef=-0.837, exp(coef)=0.433
+• emp.var.rate:coef=-0.396, exp(coef)=0.673
+
+**Interpretación y conclusiones prácticas:** 
+- Si 'duration' aparece con coeficiente positivo (habitual): llamadas más largas aumentan la probabilidad de convertir;
+priorizar calidad de contacto y seguimiento en llamadas que alcancen cierto
+umbral de minutos.
+- Si 'previous' tiene coef positivo: clientes contactados previamente tienden a convertir más (o menos si es negativo) — ajustar
+estrategia según signo.
+- Coeficientes negativos en variables macro (ej.euribor3m, emp.var.rate) sugieren que condiciones económicas más adversas
+reducen la conversión.
+- Verificar balance de clases: si hay desbalance, las métricas agregadas (accuracy) pueden ser engañosas; priorizar recall/precision
+según objetivo del negocio.
+- Recomendaciones: aplicar validación cruzada,calibrar probabilidades y probar modelos alternativos (random forest, xgboost) y
+técnicas de balanceo si es necesario.
