@@ -1,19 +1,8 @@
-# Python_EDA
-Analisis EDA para Proyecto 4 - unidad Python for data
+# Titulo del Proyecto
+Analisis EDA de las campañas de Marketing de una institución Bancaria.
 
-## Requisitos del proyecto.
-A lo largo de este proyecto se cubrirán los siguientes puntos:
-
-● Transformación y limpieza de los datos.  
-● Análisis descriptivo de los datos.  
-● Visualización de los datos.  
-● Informe explicativo del análisis.  
-
-## Herramientas utilizadas.
-
-● Python  
-● Pandas  
-● Visual Studio Code
+## Descripción del Proyecto
+Este proyecto realiza un análisis exploratorio y predictivo de las campañas de marketing de una institución financiera. El objetivo principal del trabajo es comprender mejor los patrones de comportamiento de los clientes, las variables que influyen en la suscripción de productos financieros y extraer conclusiones basadas en datos.
 
 ## Descripción de datos utilizados
 
@@ -27,14 +16,45 @@ Este dataset consta de:
 **2. Archivo excel - customer-details**
 Brinda información sobre las características demográficas y comportamiento de compra de los clientes del banco. Este Excel consta de 3 hojas de trabajo diferentes, en cada una de ellas tenemos los clientes que entraron en el banco en diferentes años. 
 
+## Requisitos del proyecto.
+A lo largo de este proyecto se cubrirán los siguientes puntos:
+
+● Transformación y limpieza de los datos.  
+● Análisis descriptivo de los datos.  
+● Visualización de los datos.  
+● Informe explicativo del análisis.  
+
+## Estructura del Proyecto
+
+🗂️ Carpetas específicas en Github
+├── Raw data/ # Datos crudos y datos limpios
+├── Notebooks/ # Notebooks de Jupyter con el análisis
+├── Informe/ # Archivo explicativo con resultados y gráficos 
+├── README.md # Descripción del proyecto
+
+
 ## Método de entrega.
 ● Archivo README.md, que recoja los pasos seguidos durante el proyecto y el análisis.  
-● Carpeta de datos llamada **Manejo_de_datos** con los archivos en bruto, asociados a este proyecto, y los datos guardados después de las transformaciones.  
-● Carpeta de codigo llamada **Queries_python_eda** con los notebooks o archivos py donde se han realizado todos los pasos pedidos en el proyecto  
+● Carpeta de datos llamada **Manejo_de_datos** dentro de Raw Data con los archivos en bruto asociados a este proyecto, y los datos guardados después de las transformaciones.  
+● Carpeta de codigo llamada **Queries_python_eda** dentro de Notebooks con los notebooks o archivos py donde se han realizado todos los pasos pedidos en el proyecto
+● Archivo PDF llamado **Informe de resultados - Python Proyecto EDA** con los pasos y resultados del proyecto.
 
-## INFORME DE LOS RESULTADOS Y PRINCIPALES PASOS LLEVADOS A CABO 
+## Herramientas y librerias utilizadas.
 
-Total de filas procesadas del dataset final: 43000
+● Python
+- pandas
+- numpy
+- matplotlib
+- seaborn
+● Visual Studio Code
+● Microsoft Excel
+
+
+## RESULTADOS Y PRINCIPALES CONCLUSIONES 
+
+Total de filas procesadas del dataset final tras unir los dos archivos en bruto: 43000
+
+**Transformación y limpieza de los datos.**
 
 **1) Calidad de datos y cambios realizados:**
 - Edad (age): imputada por mediana por grupo 'job' y convertida a entero. Mediana global usada: 38.0 años.
@@ -43,12 +63,14 @@ Total de filas procesadas del dataset final: 43000
 - Columnas numéricas convertidas a float (ej.: emp.var.rate, cons.price.idx, cons.conf.idx, euribor3m, nr.employed) y limpieza de separadores decimales.
 - Columna 'date' convertida a datetime y usada para agregaciones temporales.
 
-**2) Nuevas columnas creadas (y su objetivo):**
+**2) Nuevas columnas creadas:**
 - 'duracion_minutos': duración de la llamada en minutos (con 1 decimal).
 - 'grupo_duracion': buckets de duración (0-5, 5-10, ...).
 - 'rangos_edad': bucket de edad (menos de 25, 25-50, 50-75, >75).
 - 'ultimo_contacto': bucket de pdays (menos de 6 meses, 6-12 meses, ...).
 - 'total_hijos', 'rango_ingresos', 'tenure_years', 'visitas_mensuales' en el dataset de clientes.
+
+**Análisis descriptivo de los datos mediante Visualización de los mismos**.  
 
 **3) Resultados agregados / distribuciones relevantes:**
 - Media mensual (total_visitas) (serie clientes): 19895.72 (valor medio usado en gráficas).
@@ -68,14 +90,9 @@ Total de filas procesadas del dataset final: 43000
 **5) Correlaciones ejemplares (post-limpieza):**
  - age vs duracion_minutos: Pearson = 0.016, Spearman = 0.027 (correlación débil).
 
-**6) Unión de datasets:**
- - LEFT JOIN realizado entre Bank_registros (left) y Caracteristicas_clientes (right).
- - Dimensiones resultado (merged): 43000 filas x 34 columnas.
-
-**7) Analisis Avanzado - Correlación de variables y aplicación de Modelo predictivo:**
+**Analisis Avanzados - Correlación de variables y aplicación de Modelo predictivo:**
 
 **Resultados modelo de regresión logística**
-
 Rendimiento del modelo (conjunto de prueba): 
 - Tamaño conjunto prueba: 10124 registros
 - Accuracy : 0.895
@@ -93,15 +110,20 @@ Rendimiento del modelo (conjunto de prueba):
 • euribor3m: coef=-0.837, exp(coef)=0.433
 • emp.var.rate:coef=-0.396, exp(coef)=0.673
 
-**Interpretación y conclusiones prácticas:** 
-- Si 'duration' aparece con coeficiente positivo (habitual): llamadas más largas aumentan la probabilidad de convertir;
-priorizar calidad de contacto y seguimiento en llamadas que alcancen cierto
-umbral de minutos.
-- Si 'previous' tiene coef positivo: clientes contactados previamente tienden a convertir más (o menos si es negativo) — ajustar
-estrategia según signo.
-- Coeficientes negativos en variables macro (ej.euribor3m, emp.var.rate) sugieren que condiciones económicas más adversas
-reducen la conversión.
-- Verificar balance de clases: si hay desbalance, las métricas agregadas (accuracy) pueden ser engañosas; priorizar recall/precision
-según objetivo del negocio.
-- Recomendaciones: aplicar validación cruzada,calibrar probabilidades y probar modelos alternativos (random forest, xgboost) y
-técnicas de balanceo si es necesario.
+**Conclusiones y recomendaciones**
+
+Este análisis exploratorio nos permitió comprender mejor la estructura del conjunto de datos y los factores que pueden influir en la suscripción de productos bancarios. Se detectó que variables como la duración de la llamada, el nivel educativo y el estado laboral tienen una influencia significativa en la decisión del cliente.
+
+*Conclusiones prácticas:*
+•	Si 'duration' aparece con coeficiente positivo, que es lo más habitual, las llamadas más largas aumentan la probabilidad de convertir. Se sugiere priorizar calidad de contacto y seguimiento en llamadas que alcancen cierto umbral de minutos.
+•	Si 'previous' tiene coeficiente positivo, los clientes contactados previamente tienden a convertir más (o menos si es negativo). Se sugiere ajustar estrategia según el coeficiente resultante.
+•	Coeficientes negativos en variables macro como el euribor3m y emp.var.rate sugieren que condiciones económicas más adversas reducen la conversión.
+•	Verificar balance de clases: si hay desbalance, las métricas agregadas como accuracy pueden ser engañosas. Se debe priorizar recall/precisión según la estrategia del banco.
+
+*Recomendaciones:*
+
+•	Priorizar campañas dirigidas a segmentos con mayor propensión a suscribirse según las características identificadas.
+•	Continuar monitoreando las variables macroeconómicas (como euribor3m) que muestran correlaciones con las decisiones de los clientes.
+•	Mejorar la calidad del registro de datos para reducir la presencia de valores faltantes o inconsistentes.
+•	Recomendaciones de técnicas avanzadas:  aplicar validación cruzada, calibrar probabilidades y probar modelos alternativos (random forest, xgboost) y técnicas de balanceo si es necesario.
+
