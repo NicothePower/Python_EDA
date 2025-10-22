@@ -36,7 +36,7 @@ A lo largo de este proyecto se cubrirán los siguientes puntos:
 ## Método de entrega.
 ● Archivo README.md, que recoja los pasos seguidos durante el proyecto y el análisis.  
 ● Carpeta de datos llamada **Manejo_de_datos** dentro de Raw Data con los archivos en bruto asociados a este proyecto, y los datos guardados después de las transformaciones.  
-● Carpeta de codigo llamada **Queries_python_eda** dentro de Notebooks con los notebooks o archivos py donde se han realizado todos los pasos pedidos en el proyecto
+● Carpeta de codigo llamada **Queries_python_eda** dentro de Notebooks con los notebooks o archivos py donde se han realizado todos los pasos pedidos en el proyecto  
 ● Archivo PDF llamado **Informe de resultados - Python Proyecto EDA** con los pasos y resultados del proyecto.  
 
 ## Herramientas y librerias utilizadas.
@@ -45,7 +45,7 @@ A lo largo de este proyecto se cubrirán los siguientes puntos:
 - pandas
 - numpy
 - matplotlib
-- seaborn
+- seaborn  
 ● Visual Studio Code  
 ● Microsoft Excel  
 
