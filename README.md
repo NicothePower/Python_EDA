@@ -35,9 +35,9 @@ A lo largo de este proyecto se cubrirán los siguientes puntos:
 
 ## Método de entrega.
 ● Archivo README.md, que recoja los pasos seguidos durante el proyecto y el análisis.  
-● Carpeta de datos llamada **Manejo_de_datos** dentro de Raw Data con los archivos en bruto asociados a este proyecto, y los datos guardados después de las transformaciones.  
-● Carpeta de codigo llamada **Queries_python_eda** dentro de Notebooks con los notebooks o archivos py donde se han realizado todos los pasos pedidos en el proyecto  
-● Archivo PDF llamado **Informe de resultados - Python Proyecto EDA** con los pasos y resultados del proyecto.  
+● Branch/Carpeta de datos llamada **Manejo_de_datos** dentro de Raw Data con los archivos en bruto asociados a este proyecto, y los datos guardados después de las transformaciones.  
+● Branch/Carpeta de codigo llamada **Queries_python_eda** dentro de Notebooks con los notebooks o archivos py donde se han realizado todos los pasos pedidos en el proyecto  
+● Branch con archivo PDF llamado **Informe_EDA_final** con los pasos y resultados del proyecto.  
 
 ## Herramientas y librerias utilizadas.
 
@@ -45,7 +45,9 @@ A lo largo de este proyecto se cubrirán los siguientes puntos:
 - pandas
 - numpy
 - matplotlib
-- seaborn  
+- seaborn
+- sklearn  
+
 ● Visual Studio Code  
 ● Microsoft Excel  
 
@@ -87,7 +89,8 @@ Total de filas procesadas del dataset final tras unir los dos archivos en bruto:
   PC2: duracion_minutos, duration, total_hijos
   PC3: total_hijos, duration, duracion_minutos
 
-**5) Correlaciones ejemplares (post-limpieza):**
+**5) Correlaciones ejemplares:**
+ - ocupación (job) vs duración_minutos: Pearson = 0.020, Spearman = 0.032 (correlación débil).
  - age vs duracion_minutos: Pearson = 0.016, Spearman = 0.027 (correlación débil).
 
 **Analisis Avanzados - Correlación de variables y aplicación de Modelo predictivo:**
@@ -112,9 +115,12 @@ Rendimiento del modelo (conjunto de prueba):
 
 **Conclusiones y recomendaciones**
 
-Este análisis exploratorio nos permitió comprender mejor la estructura del conjunto de datos y los factores que pueden influir en la suscripción de productos bancarios. Se detectó que variables como la duración de la llamada, el nivel educativo y el estado laboral tienen una influencia significativa en la decisión del cliente.  
+Este análisis exploratorio nos permitió comprender mejor la estructura del conjunto de datos y los factores que pueden influir en la suscripción de productos bancarios.
 
+A partir de los hallazgos, se concluye que la duración de la llamada, la experiencia previa del cliente y las condiciones macroeconómicas siguen siendo las variables de mayor influencia. Se recomienda optimizar las campañas en torno a estos factores y mantener una evaluación periódica de los indicadores predictivos.
+  
 *Conclusiones prácticas:*  
+
 •	Si 'duration' aparece con coeficiente positivo, que es lo más habitual, las llamadas más largas aumentan la probabilidad de convertir. Se sugiere priorizar calidad de contacto y seguimiento en llamadas que alcancen cierto umbral de minutos.  
 •	Si 'previous' tiene coeficiente positivo, los clientes contactados previamente tienden a convertir más (o menos si es negativo). Se sugiere ajustar estrategia según el coeficiente resultante.  
 •	Coeficientes negativos en variables macro como el euribor3m y emp.var.rate sugieren que condiciones económicas más adversas reducen la conversión.  
